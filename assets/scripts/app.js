@@ -1,5 +1,3 @@
-const { func } = require("prop-types");
-
 const ATTACK_VALUE = 10;
 const STRONG_ATTACK_VALUE = 17;
 const MONSTER_ATTACK_VALUE = 14;
@@ -13,8 +11,7 @@ const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
-
-const enteredNumber = promp('Maximum Life for you and the Monster.', '100');
+const enteredNumber = prompt('Maximum Life for you and the Monster.', '100');
 
 let chosenMaxLife = parseInt(enteredNumber);
 let battleLog = [];
@@ -101,7 +98,7 @@ function endRound() {
   if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
     alert('you won!');
     writeToLog(
-      LOG_EVENT_MONSTER_ATTACK,
+      LOG_EVENT_GAME_OVER,
       'PLAYER WON!',
       currentMonsterHealth,
       currentPlayerHealth
@@ -110,7 +107,7 @@ function endRound() {
   } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
     alert('You Lost!');
     writeToLog(
-      LOG_EVENT_MONSTER_ATTACK,
+      LOG_EVENT_GAME_OVER,
       'MONSTER WON!',
       currentMonsterHealth,
       currentPlayerHealth
@@ -119,7 +116,7 @@ function endRound() {
   } else if (currentMonsterHealth <= 0 && currentPlayerHealth <= 0) {
     alert('You have a draw!');
     writeToLog(
-      LOG_EVENT_MONSTER_ATTACK,
+      LOG_EVENT_GAME_OVER,
       'A DRAW!',
       currentMonsterHealth,
       currentPlayerHealth
@@ -190,7 +187,7 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-  battleLog();
+  console.log(battleLog);
 }
 
 attackBtn.addEventListener('click', attackHandler);
