@@ -42,7 +42,14 @@ function strongAttackHandler() {
 }
 
 function healPlayerHandler() {
-  increasePlayerHealth(HEAL_VALUE);
+  let healValue;
+  if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
+    alert("You can't heal more than your max initial health");
+  } else {
+    healValue = HEAL_VALUE;
+  }
+  increasePlayerHealth(healValue);
+  currentPlayerHealth += healValue;
   endRound();
 }
 
