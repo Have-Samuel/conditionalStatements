@@ -245,8 +245,10 @@ function printLogHandler() {
   // }
   let x = 0;// For of LOOP
   for (const logEntry of battleLog) {
-    console.log(logEntry);
-    console.log(x);
+    console.log(`#${x}`);
+    for (const key in logEntry) {
+      console.log(`${key} => ${logEntry[key]}`);
+    }
     x++;
   }
 }
